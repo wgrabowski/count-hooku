@@ -1,0 +1,2 @@
+# hooklets
+Git hooks manager
