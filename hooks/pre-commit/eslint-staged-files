@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# @Description: Lint commited .ts or .js files with local slint
+# TS or JS files
+echo "a"
+STAGED_LINTABLE_FILES=`git diff --cached --name-only | grep [.][t|j]s$`
+if [[ -e "$STAGED_LINTABLE_FILES" ]];then
+    ./node_modules/.bin/eslint $STAGED_LINTABLE_FILES;
+    exit $?
+fi

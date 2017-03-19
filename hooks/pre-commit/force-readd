@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# @Description: Warn about uncommited changes in staged files
+# TS or JS files
+STAGED_FILES=`git diff --cached --name-only`;
+CHANGED_STAGED_FILES=`git diff -cached --name-only -- $STAGED_FILES`;
+if [[ -e "$CHANGED_STAGED_FILES" ]];then
+    echo "You have not staged changes in files you are about to commit:"
+    echo "$CHANGED_STAGED_FILES"
+    exit $1
+fi
